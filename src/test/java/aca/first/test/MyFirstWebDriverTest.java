@@ -22,7 +22,7 @@ public class MyFirstWebDriverTest {
 		 WebDriver driver = new FirefoxDriver();
 		// driver.get("http://aca.am");
 		driver.get("http://compensation.codebnb.me/");
-		driver.navigate().to("http://compensation.codebnb.me/");
+		
 		//Assert.assertEquals("compensation", driver.getTitle(), "Compensation tool");
 
 		assertEquals("COMPENSATION", driver.findElement(By.xpath("//span[contains(.,'Compensation')]")).getText());
