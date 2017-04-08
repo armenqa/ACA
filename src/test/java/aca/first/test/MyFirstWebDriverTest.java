@@ -8,6 +8,9 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 /*
@@ -23,7 +26,7 @@ public class MyFirstWebDriverTest {
 	//
 	//
 	@Test()
-	public void myFirstTest(){
+	public void myFirstTest() throws InterruptedException {
 		// Opened "Mozilla Firefox"
 		 WebDriver driver = new FirefoxDriver();
 		// Open http://compensation.codebnb.me/ page
@@ -35,16 +38,27 @@ public class MyFirstWebDriverTest {
 		// Make sure that our site has an element by this xpath    //a[@href='/accounts/login']"
 		assertEquals("SIGN IN", driver.findElement(By.xpath("//a[@href='/accounts/login']")).getText());
 
+
+
+
+
 		// Click on the button "SIGN IN"
 		driver.findElement(By.xpath("//a[@href='/accounts/login']")).click();
-		//shoud be opened "ligin" and "password" popup window
+		//shoud be opened "login" and "password" popup window
 
-	/*	driver.findElement(By.xpath("//input[@id='id_username']")).sendKeys("dallas" );
+		Thread.sleep(4000);
+		// snedkey for the input field "username"
+		driver.findElement(By.xpath("//input[@id='id_username']")).sendKeys("dallas" );
+		// snedkey for the input field "password"
 		driver.findElement(By.xpath("//input[@id='id_password']")).sendKeys("Password" );
-		driver.findElement(By.xpath("//input[@class='btn blockBtn blue']")).click(); */
+		Thread.sleep(6000);
+		//press submit
+		driver.findElement(By.xpath("//input[@class='btn blockBtn blue']")).click();
+		Thread.sleep(6000);
+		driver.close();
+		driver.quit();
 
-		 	 driver.close();
-		 	 driver.quit();
+
 	}
 
 }
