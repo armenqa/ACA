@@ -96,6 +96,7 @@ public class MyFirstWebDriverTest {
         //navigate second page of "Employees"
         driver.findElement(By.xpath(".//html/body/div/div[3]/ul/li[4]/a")).click();
 
+
 	}
 	/*
 		Preconditions: When we logged in
