@@ -47,7 +47,7 @@ public class MyFirstWebDriverTest {
 		//shoud be opened "login" and "password" popup window
 		Thread.sleep(4000);
 		// sendkey for the input field "username"
-		driver.findElement(By.xpath("//input[@id='id_username']")).sendKeys("dallas" );
+		driver.findElement(By.xpath("//input[@id='id_username']")).sendKeys("armen" );
 		// sendkey for the input field "password"
 		driver.findElement(By.xpath("//input[@id='id_password']")).sendKeys("Password" );
 		Thread.sleep(6000);
