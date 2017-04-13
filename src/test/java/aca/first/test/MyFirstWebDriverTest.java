@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,8 +22,7 @@ import java.util.Set;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class MyFirstWebDriverTest {
-
-
+	private WebDriver driver;
 	/*
     Steps
     1: Opened "Mozilla Firefox".
@@ -56,12 +57,39 @@ public class MyFirstWebDriverTest {
 		Thread.sleep(10000);
 
 	}
-
-	private WebDriver driver;
 	/*
 		Preconditions: When we logged in
 		Steps
-		1: Navigate to the Surveys page
+		1: Click on the "JOB LIST" button on main menu
+		2: Verify that we redirected on the page "Job List"
+		3: Click on the dropdown item to "Find Job"
+		4: Click on the firs "Edit" icon of  list
+		Actual result: Should be redirect on the "http://compensation.codebnb.me/jobs/edit/6675/" page
+		Expected result: We navigated on the "http://compensation.codebnb.me/jobs/edit/6675/" page
+ 	*/
+	@Test()
+	public void myJOB_LIST() throws InterruptedException {
+		//Click on the "JOB LIST" button on main menu
+		driver.findElement(By.xpath("//a[text()='Job List']")).click();
+		Thread.sleep(10000);
+		//Verify that we redirected on the page "Job List"
+		assertEquals("City of Houston: Job list", driver.findElement(By.xpath("//h6[text()='City of Houston: Job list']")).getText());
+		Thread.sleep(10000);
+		//Click on the dropdown item to "Find Job"
+		driver.findElement(By.xpath("//a[@data-original-title='Show All Items']")).click();
+		Thread.sleep(6000);
+		//Click on the firs "Edit" icon of  list
+		driver.findElement(By.xpath(".//tbody/tr[1]/td[9]/a")).click();
+		//Should be redirect on the "http://compensation.codebnb.me/jobs/edit/6675/" page
+		Thread.sleep(10000);
+		//Verify that we redirect on the "http://compensation.codebnb.me/jobs/edit/6675/" page
+
+	}
+
+	/*
+		Preconditions: When we logged in
+		Steps
+		1: Navigate to the Employees page
 		2: Click on the "Last name" icon
 		3: Click on the input field "Last name icon" and enter the "Tina"
 		4: Click on the search icon
@@ -71,7 +99,7 @@ public class MyFirstWebDriverTest {
      */
 
 	@Test()
-	public void myFirstTest() throws InterruptedException {
+	public void Employees() throws InterruptedException {
 
         //navigate to the Surveys page
         driver.findElement(By.xpath("//a[text()='Employees']")).click();
@@ -95,38 +123,96 @@ public class MyFirstWebDriverTest {
         Thread.sleep(10000);
         //navigate second page of "Employees"
         driver.findElement(By.xpath(".//html/body/div/div[3]/ul/li[4]/a")).click();
-
-
 	}
 	/*
 		Preconditions: When we logged in
 		Steps
-		1: Click on the "JOB LIST" button on main menu
-		2: Verify that we redirected on the page "Job List"
-		3: Click on the dropdown item to "Find Job"
-		4: Click on the firs "Edit" icon of  list
-		Actual result: Should be redirect on the "http://compensation.codebnb.me/jobs/edit/6675/" page
-		Expected result: We navigated on the "http://compensation.codebnb.me/jobs/edit/6675/" page
+		1: Click on the "Surveys" button on main menu
+		2: Click on the first row of the "Survey Data" list
+		3: Click on the drop down icon of the "Details"    http://joxi.ru/bmoJ9jecZzKGry
+		4: Click on the fourth element of the drop down list of "Details"
+		Actual result: Our "Base,TTC,TDC" information should be updated
+		Expected result: The informations of "Base,TTC,TDC" are updated
  	*/
-		@Test()
-		public void mySecondTest() throws InterruptedException {
-			//Click on the "JOB LIST" button on main menu
-			driver.findElement(By.xpath("//a[text()='Job List']")).click();
-			Thread.sleep(10000);
-			//Verify that we redirected on the page "Job List"
-			assertEquals("City of Houston: Job list", driver.findElement(By.xpath("//h6[text()='City of Houston: Job list']")).getText());
-			Thread.sleep(10000);
-			//Click on the dropdown item to "Find Job"
-			driver.findElement(By.xpath("//a[@data-original-title='Show All Items']")).click();
-			Thread.sleep(6000);
-			//Click on the firs "Edit" icon of  list
-			driver.findElement(By.xpath(".//*[@id='6675']/td[9]/a/i")).click();
-			//Should be redirect on the "http://compensation.codebnb.me/jobs/edit/6675/" page
-			Thread.sleep(10000);
-			//Verify that we redirect on the "http://compensation.codebnb.me/jobs/edit/6675/" page
-			assertEquals("643.9", driver.findElement(By.xpath(".//*[@id='id_job_code']")).getAttribute("value"));
-			Thread.sleep(10000);
-		}
+	@Test()
+	public void Surveys() throws InterruptedException {
+		//Click on the "Surveys" button on main menu
+		driver.findElement(By.xpath("//a[text()='Surveys']")).click();
+		Thread.sleep(10000);
+		//Click on the first row of the "Survey Data" list
+		driver.findElement(By.xpath(".//tbody/tr[1 and @class='survey_job_code active'] ")).click();
+		Thread.sleep(3000);
+		//Click on the drop down icon of the "Details"    http://joxi.ru/bmoJ9jecZzKGry
+		driver.findElement(By.xpath(".//*[@id='survey_types']")).click();
+		Thread.sleep(3000);
+		//Click on the fourth element of the drop down list of "Details"
+		driver.findElement(By.xpath(".//*[@id='survey_types']/option[4]")).click();
+		//Our "Base,TTC,TDC" information should be updated
+	}
+
+	/*
+		Preconditions: When we logged in
+		Steps
+		1: Click on the "Market Matcher" button on main menu
+		2: Click on the first row of the "Survey Data" list
+		3: Click on the drop down icon of the "Details"    http://joxi.ru/bmoJ9jecZzKGry
+		4: Click on the fourth element of the drop down list of "Details"
+		Actual result: Our "Base,TTC,TDC" information should be updated
+		Expected result: The informations of "Base,TTC,TDC" are updated
+
+	@Test()
+	public void Market_Matcher() throws InterruptedException {
+		//Click on the "Market Matcher" button on main menu
+		driver.findElement(By.xpath("//a[text()='Market Matcher']")).click();
+		Thread.sleep(10000);
+
+		driver.findElement(By.xpath("html/body/div/div[1]/div[1]/div[1]/form/div/span/a")).click();
+		Thread.sleep(10000);
+		driver.findElement(By.xpath(".//*[@id='ui-id-671']")).click();
+
+	//	WebElement subMenu = driver.findElement(By.xpath(".//li[@id='ui-id-12']"));
+	//	actions.moveToElement(subMenu);
+	//	actions.click().build().perform();
+
+
+
+		//Click on the drop down icon near the search icon      http://joxi.ru/DmBZ0v5cG3XamP
+	//	driver.findElement(By.xpath("//a[@data-original-title='Show All Items']")).click();
+
+		Thread.sleep(6000);
+
+	//	driver.findElement(By.xpath(".//*[@id='ui-id-1313']")).click();
+		//Thread.sleep(3000);
+
+	}
+*/
+
+
+
+
+		/*
+		Preconditions: When we logged in
+		Steps
+			1: Hover on the "Reports" button on main menu
+			2: Click on the "Jobs Reports" from the "Reports" dropdown menu
+		Actual result: Should be redirect on the "http://compensation.codebnb.me/reports/jobs-reports/" page
+		Expected result: We navigated on the "http://compensation.codebnb.me/reports/jobs-reports/" page
+
+	@Test()
+	public void Reports() throws InterruptedException {
+
+		Actions builder = new Actions(driver);
+		//Hover on the "Reports" button on main menu
+		builder.moveToElement(driver.findElement(By.xpath("//a[(contains(.,'Reports'))and(@href='#')]"))).perform();
+		Thread.sleep(5000);
+		// Click on the "Jobs Reports" from the "Reports" dropdown menu
+		builder.moveToElement(driver.findElement(By.xpath("//a[contains(.,'Jobs Reports')]"))).click();
+		Thread.sleep(10000);
+		driver.findElement(By.xpath(".//*[@id='employee_table']/div/div[2]/table/thead/tr/th[2]/button")).click();
+		Thread.sleep(10000);
+	}*/
+
+
 
 
 
