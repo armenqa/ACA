@@ -68,7 +68,7 @@ public class MyFirstWebDriverTest {
 		Expected result: We navigated on the "http://compensation.codebnb.me/jobs/edit/6675/" page
  	*/
 	@Test()
-	public void myJOB_LIST() throws InterruptedException {
+	public void jobList() throws InterruptedException {
 		//Click on the "JOB LIST" button on main menu
 		driver.findElement(By.xpath("//a[text()='Job List']")).click();
 		Thread.sleep(10000);
@@ -99,7 +99,7 @@ public class MyFirstWebDriverTest {
      */
 
 	@Test()
-	public void Employees() throws InterruptedException {
+	public void employees() throws InterruptedException {
 
         //navigate to the Surveys page
         driver.findElement(By.xpath("//a[text()='Employees']")).click();
@@ -135,7 +135,7 @@ public class MyFirstWebDriverTest {
 		Expected result: The informations of "Base,TTC,TDC" are updated
  	*/
 	@Test()
-	public void Surveys() throws InterruptedException {
+	public void surveys() throws InterruptedException {
 		//Click on the "Surveys" button on main menu
 		driver.findElement(By.xpath("//a[text()='Surveys']")).click();
 		Thread.sleep(10000);
@@ -154,41 +154,24 @@ public class MyFirstWebDriverTest {
 		Preconditions: When we logged in
 		Steps
 		1: Click on the "Market Matcher" button on main menu
-		2: Click on the first row of the "Survey Data" list
-		3: Click on the drop down icon of the "Details"    http://joxi.ru/bmoJ9jecZzKGry
-		4: Click on the fourth element of the drop down list of "Details"
-		Actual result: Our "Base,TTC,TDC" information should be updated
-		Expected result: The informations of "Base,TTC,TDC" are updated
+		2: Click on the "Show all items icon"
+		3: In list click on the "Engineer" row
 
+		Actual result: Should be shown the Engineers details
+		Expected result: We see the Engineers details
+ 	*/
 	@Test()
-	public void Market_Matcher() throws InterruptedException {
+	public void marketMatcher() throws InterruptedException {
 		//Click on the "Market Matcher" button on main menu
 		driver.findElement(By.xpath("//a[text()='Market Matcher']")).click();
+        Thread.sleep(10000);
+		driver.findElement(By.xpath("//a[@class='custom-combobox-toggle ui-corner-right']")).click();
 		Thread.sleep(10000);
+        driver.findElement(By.xpath("//li[text()='Engineer']")).click();
+        Thread.sleep(10000);
 
-		driver.findElement(By.xpath("html/body/div/div[1]/div[1]/div[1]/form/div/span/a")).click();
-		Thread.sleep(10000);
-		driver.findElement(By.xpath(".//*[@id='ui-id-671']")).click();
-
-	//	WebElement subMenu = driver.findElement(By.xpath(".//li[@id='ui-id-12']"));
-	//	actions.moveToElement(subMenu);
-	//	actions.click().build().perform();
-
-
-
-		//Click on the drop down icon near the search icon      http://joxi.ru/DmBZ0v5cG3XamP
-	//	driver.findElement(By.xpath("//a[@data-original-title='Show All Items']")).click();
-
-		Thread.sleep(6000);
-
-	//	driver.findElement(By.xpath(".//*[@id='ui-id-1313']")).click();
-		//Thread.sleep(3000);
 
 	}
-*/
-
-
-
 
 		/*
 		Preconditions: When we logged in
@@ -197,20 +180,22 @@ public class MyFirstWebDriverTest {
 			2: Click on the "Jobs Reports" from the "Reports" dropdown menu
 		Actual result: Should be redirect on the "http://compensation.codebnb.me/reports/jobs-reports/" page
 		Expected result: We navigated on the "http://compensation.codebnb.me/reports/jobs-reports/" page
-
+		*/
 	@Test()
-	public void Reports() throws InterruptedException {
+	public void reports() throws InterruptedException {
 
 		Actions builder = new Actions(driver);
 		//Hover on the "Reports" button on main menu
-		builder.moveToElement(driver.findElement(By.xpath("//a[(contains(.,'Reports'))and(@href='#')]"))).perform();
+		builder.moveToElement(driver.findElement(By.xpath("//a[@href='#']"))).perform();
 		Thread.sleep(5000);
 		// Click on the "Jobs Reports" from the "Reports" dropdown menu
 		builder.moveToElement(driver.findElement(By.xpath("//a[contains(.,'Jobs Reports')]"))).click();
 		Thread.sleep(10000);
-		driver.findElement(By.xpath(".//*[@id='employee_table']/div/div[2]/table/thead/tr/th[2]/button")).click();
-		Thread.sleep(10000);
-	}*/
+		//driver.findElement(By.xpath("//button[@class='fadeToggleBtn']")).click();
+
+//		driver.findElement(By.xpath(".//*[@id='employee_table']/div/div[2]/table/thead/tr/th[2]/button")).click();
+//		Thread.sleep(10000);
+	}
 
 
 
