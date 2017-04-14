@@ -95,7 +95,7 @@ public class MyFirstWebDriverTest {
 	public void employees() throws InterruptedException {
 
         //navigate to the Employees page
-        driver.findElement(xpaths.employees).click();
+        driver.findElement(xpaths.employes).click();
         Thread.sleep(4000);
         //click on the "Last name" icon
         driver.findElement(xpaths.lastNameIcon).click();

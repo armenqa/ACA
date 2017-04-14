@@ -17,7 +17,7 @@ public class Xpaths {
     final   By detailsIcon = By.xpath(".//*[@id='survey_types']");
     final   By detailsElement = By.xpath(".//*[@id='survey_types']/option[4]");
 //employees
-    final   By employees = By.xpath("//a[text()='Employees']");
+    final   By employes = By.xpath("//a[text()='Employees']");
     final   By lastNameIcon = By.xpath(".//*[@id='employee_table']/div/div[2]/table/thead/tr/th[2]/button");
     final   By inpFild = By.xpath(".//*[@id='first_name_panel']/div[1]/div[1]/input");
     final   By searchbutton = By.xpath(".//*[@id='first_name_panel']/div[1]/div[1]/button");
